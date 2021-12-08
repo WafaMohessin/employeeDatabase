@@ -25,29 +25,29 @@ const prompts = () => {
     .then((answers) => {
       if (answers) {
         switch (answers.prompt) {
-          // View all employees
-          case "View All Employees":
-            viewAllEmployees();
-            break;
-          // case 'Add Employee':
-          //     addEmployeePrompt();
-          // break;
-          // case 'Update Employee Role':
-          //     updateEmployeePrompt();
-          // break;
-          // // View All roles
-          case "View All Roles":
-            getRoles();
-            break;
-          // case 'Add Role':
-          //     addRolePrompt();
-          // break;
           // // View All Departments
           case "View All Departments":
             getDepartments();
             break;
+          // // View All roles
+          case "View All Roles":
+            getRoles();
+            break;
+          // View all employees
+          case "View All Employees":
+            viewAllEmployees();
+            break;
           case "Add Department":
             createDepartment();
+            break;
+          case "Add Role":
+            addRolePrompt();
+            break;
+          case "Add Employee":
+            addEmployeePrompt();
+            break;
+          case "Update Employee Role":
+            updateEmployeePrompt();
             break;
           case "Quit":
             process.exit();
@@ -90,13 +90,46 @@ function createDepartment() {
       },
     ])
     .then((answers) => {
-        let name = answers;
+      let name = answers;
       db.addDepartment(name)
         .then(() => console.log(`Added ${name.name} to the database`))
         .then(() => prompts());
     });
 }
 
+function createRole() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "What is the name of the role?",
+      },
+    ])
+    .then((answers) => {
+      let name = answers;
+      db.addRole(name)
+        .then(() => console.log(`Added ${name.name} to the database`))
+        .then(() => prompts());
+    });
+}
+
+function createEmployee() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "What is the first name and the last name of the employee?",
+      },
+    ])
+    .then((answers) => {
+      let name = answers;
+      db.addEmployee(name)
+        .then(() => console.log(`Added ${name.name} to the database`))
+        .then(() => prompts());
+    });
+}
 // const getEmployees = () => {
 //     db.query(`SELECT id,
 //     concat(employee.first_name, ' ', employee.last_name) AS full_name
