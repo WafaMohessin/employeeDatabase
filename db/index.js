@@ -23,15 +23,15 @@ class DB {
 
     
     addRole(role) {
-        return this.connection.promise().query('INSERT INTO role (title, salary, department_id) VALUES ', role);
+        return this.connection.promise().query('INSERT INTO role SET ?', role);
     }
 
     addEmployee(employee) {
-        return this.connection.promise().query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ', employee);
+        return this.connection.promise().query('INSERT INTO employee SET ?', employee);
     }
 
-    updateEmployeeRole () {
-        return this.connection.promise().query('UPDATE employee SET role_id ?', employee);
+    updateEmployeeRole (roleid, employeeid ) {
+        return this.connection.promise().query('UPDATE employee SET role_id = ? WHERE id = ?', [roleid, employeeid]);
     }
     
 
