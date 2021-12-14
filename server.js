@@ -137,7 +137,6 @@ function createEmployee() {
     const roleChoices = data.map(({ id, name }) => ({
       name: name,
       value: id,
-
     }))
     db.findAllEmployees().then(([data]) => {
       const managerChoices = data
