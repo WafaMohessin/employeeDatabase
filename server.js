@@ -149,6 +149,7 @@ function createEmployee() {
 }
 
 function addEmployee() {
+   
   inquirer
     .prompt([
               {
@@ -181,7 +182,6 @@ function addEmployee() {
         .then(() => console.log(`Added ${name.name} to the database`))
         .then(() => prompts());
     })
-}
 
 function employeeUpdate (){
   
@@ -208,7 +208,5 @@ function employeeUpdate (){
         .then(() => prompts());
     });
 }
-
-
-getEmployees();
+}
 prompts();
