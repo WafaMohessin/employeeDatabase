@@ -46,8 +46,8 @@ const prompts = () => {
           case "Add Employee":
             createEmployee();
             break;
-          case "Update Employee Role":
-            employeeUpdate();
+          /* case "Update Employee Role":
+            emplo */yeeUpdate();
            break;
           case "Quit":
             process.exit();
@@ -163,12 +163,12 @@ function createEmployee() {
                    message: `What is the employee's role?`,
                    choices: roleChoices,
                },
-               /* {
+               {
                  type: 'list',
                  name: 'manager',
                  message: `Who is the employee's manager?`,
                  choices: managerChoices,
-               }, */
+               }, 
           ])
         
       .then((answers) => {
@@ -180,7 +180,19 @@ function createEmployee() {
   })
 }
 
-function employeeUpdate (){
+/* function employeeUpdate(){
+  db.findAllRoles().then(([data]) => {
+    const roleChoices = data.map(({ id, name }) => ({
+      name: name,
+      value: id,
+    }))
+    db.findAllEmployees().then(([data]) => {
+      const managerChoices = data
+      //.filter(({role}) => role == "manager")
+      .map(({ id, name }) => ({
+        name: name,
+        value: id,
+      }))
   
   inquirer
     .prompt([
@@ -203,6 +215,6 @@ function employeeUpdate (){
         .then(() => console.log(`Updated ${answers.employee_id} to the database`))
         .then(() => prompts());
     });
-}
-
+})
+ */
 prompts();

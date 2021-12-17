@@ -26,3 +26,9 @@ MySQL
 1. Run all necessary commands and files
 2. Manage your employee system!
 
+# Link video
+[Link Text](https://screencast-o-matic.com/watch/crlboQV2GF6)
+
+
+
+
